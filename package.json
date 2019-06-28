@@ -4,7 +4,6 @@
   "description": "Pure JS calculator with Bootstrap",
   "main": "webpack.config.js",
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "node-static": "^0.7.11",
     "webpack": "^4.35.0",
     "webpack-cli": "^3.3.5"
@@ -12,8 +11,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.0.0"
+    "babel-loader": "^8.0.6"
   },
   "scripts": {
     "start": "npm install && npm run build && start http://127.0.0.1:8080/public/index.html && static ",
