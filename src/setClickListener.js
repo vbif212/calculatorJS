@@ -3,29 +3,18 @@
 export default function () {
     const inputCalcString = getElementById("calcString");
     const allRemainingInputButtons = getElementsBySelector("input[type=button]:not(#clear):not(#equals)");
-    setListener(
-        "click",
-        getElementById("equals"),
-        () => {
-            setElementValue(inputCalcString, eval(inputCalcString.value))
-        }
-    );
-    setListener(
-        "click",
-        getElementById("clear"),
-        () => {
-            setElementValue(inputCalcString, "")
-        }
-    );
-    allRemainingInputButtons.forEach(element => {
-        setListener(
-            "click",
-            element,
-            () => {
-                setElementValue(inputCalcString, inputCalcString.value + element.value)
-            }
-        );
+    setClickListener(getElementById("equals"), () => {
+        setElementValue(inputCalcString, eval(inputCalcString.value))
     });
+    setClickListener(getElementById("clear"), () => {
+        setElementValue(inputCalcString, "")
+    });
+    allRemainingInputButtons.forEach(element => {
+            setClickListener(element, () => {
+                setElementValue(inputCalcString, inputCalcString.value + element.value)
+            });
+        }
+    );
 };
 
 const getElementById = id => {
@@ -42,4 +31,8 @@ const setListener = (action, element, func) => {
 
 const setElementValue = (element, value) => {
     element.value = value;
+};
+
+const setClickListener = (element, func) => {
+    setListener("click", element, func);
 };
